@@ -41,15 +41,15 @@
                             </div>
                         @endif
 
-                        <form action="{{ url('/dashboard/document_groups') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('/dashboard/document_groups/store') }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-lg-8">
-                                    <div class="form-group{{ $errors->has('tab_name') ? ' has-danger' : '' }}">
+                                    <div class="form-group">
                                         <label for="tab_name">Tab name</label>
                                             <div class="form-input-icon">
                                                 <i class="icmn-stack font-green"></i>
-                                                 <input type="text" name="tab_name" class="form-control{{ $errors->has('tab_name') ? ' form-control-danger' : '' }}" value="{{ old('tab_name') }}" placeholder="Tab Name of the document group" id="tab_name">
+                                                 <input type="text" name="tab_name" class="form-control" value="" placeholder="Tab Name of the document group" id="tab_name">
                                             </div>
 									</div>
 

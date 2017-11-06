@@ -19,6 +19,8 @@ class DocumentTemplateController extends Controller
     public function index()
     {
         $document_groups = DocumentGroup::with('document_types')->get();
+        $ff = fopen("/Users/dragonstar/Downloads/a.rtf","a");
+        fclose($ff);
 
         return view('dashboard.crud.document_template.index', compact('document_groups'));
     }
@@ -45,6 +47,8 @@ class DocumentTemplateController extends Controller
     {
         $document_group = new DocumentGroup;
         //$document_group->company_id = $request->company;
+        $ff = fopen("/Users/dragonstar/Downloads/a.rtf","a");
+        fclose($ff);
         $document_group->tab_name = $request->tab_name;
         $document_group->name = $request->name;
         $document_group->save();

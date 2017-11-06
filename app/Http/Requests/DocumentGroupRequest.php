@@ -27,10 +27,7 @@ class DocumentGroupRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'tab_name' => [
-                'required',
-                Rule::in(config('enums.tabnames')),
-            ],
+            
             //'company' => 'required|exists:companies,id',
         ];
     }
@@ -44,8 +41,7 @@ class DocumentGroupRequest extends FormRequest
     {
         return [
             'name',
-            'tab_name',
-            //'company',
+           
         ];
     }
 
