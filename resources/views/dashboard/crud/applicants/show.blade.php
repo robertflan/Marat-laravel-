@@ -83,20 +83,32 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title" id="myModalLabel">Upload Contract</h4>
+                            <h4 class="modal-title" id="myModalLabel">Neu aus Vorlage</h4>
                         </div>
                         <form action="{{ url('/dashboard/applicants/'.$application->id.'/doc_upload') }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="modal-body">
                                 <div class="form-group">
                                     <div class="row" style="margin-bottom: 5px;">
-                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Art</label>
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Category</label>
                                         <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type">
-                                            <option>ABC</option>
+                                            <option>Category</option>
                                         </select>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
-                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Titel</label>
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Art</label>
+                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type">
+                                            <option>Art</option>
+                                        </select>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 5px;">
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Template</label>
+                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type">
+                                            <option>Template</option>
+                                        </select>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 5px;">
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Title</label>
                                         <input type="text" class="col-lg-6 form-control" style="width: 80%;" name="doc_title" id="doc_title" required/>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
