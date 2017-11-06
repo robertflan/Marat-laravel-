@@ -45,8 +45,8 @@ class DocumentGroupController extends Controller
     {
         $document_group = new DocumentGroup;
         //$document_group->company_id = $request->company;
-        $document_group->name = $request->name;
         $document_group->tab_name = $request->tab_name;
+        $document_group->name = $request->name;
         $document_group->save();
 
         return redirect('/dashboard/document_groups')->with('message', 'Successfully created document group!');

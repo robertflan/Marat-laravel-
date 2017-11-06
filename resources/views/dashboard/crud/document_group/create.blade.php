@@ -45,14 +45,13 @@
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-lg-8">
-																		<div class="form-group">
-																				<label>Tab name</label>
-																				<select class="form-control" name="tab_name">
-																				@foreach(config('enums.tabnames') as $tab_name)
-																						<option value="{{ $tab_name }}">{{ $tab_name }}</option>
-																				@endforeach
-																				</select>
-																		</div>
+                                    <div class="form-group{{ $errors->has('tab_name') ? ' has-danger' : '' }}">
+                                        <label for="tab_name">Tab name</label>
+                                            <div class="form-input-icon">
+                                                <i class="icmn-stack font-green"></i>
+                                                 <input type="text" name="tab_name" class="form-control{{ $errors->has('tab_name') ? ' form-control-danger' : '' }}" value="{{ old('tab_name') }}" placeholder="Tab Name of the document group" id="tab_name">
+                                            </div>
+									</div>
 
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                         <label for="name">Name</label>

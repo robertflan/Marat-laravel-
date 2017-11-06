@@ -16,7 +16,7 @@ class CreateDocumentGroupsTable extends Migration
         Schema::create('document_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            
+            $table->string('tab_name');
             $table->unsignedInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
 

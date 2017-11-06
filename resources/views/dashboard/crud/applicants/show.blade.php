@@ -35,7 +35,9 @@
                                 <div class="form-group">
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Art</label>
-                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type"></select>
+                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type">
+                                            <option>ABC</option>
+                                        </select>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Titel</label>
@@ -361,8 +363,8 @@
                                                 <div class="form-group">
                                                     <label class="form-control-label" for="document group"><h5 style="margin-bottom: 5px;">Kategorien</h5></label>
                                                     <select name="document_group" class="form-control selectpicker" data-live-search="true" id="document_group">
-                                                        @foreach($documents->where('tab_name', 'Vertrage') as $key => $group)
-                                                            <option value={{ $key }}>{{ $group->name }}</option>
+                                                        @foreach($document_groups as $item)
+                                                            <option value="1">{{ $item->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -375,7 +377,7 @@
                                                 <thead style="background:red;color:white;">
                                                 <tr>
                                                     <th>Eingang</th>
-                                                    <th>Titel</th>
+                                                    <th>Titel2</th>
                                                     <th>Art</th>
                                                     <th>Beginn</th>
                                                     <th>Ende</th>
@@ -384,6 +386,13 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody id="document_list">
+                                                    <th>Eingang</th>
+                                                    <th>Titel2</th>
+                                                    <th>Art</th>
+                                                    <th>Beginn</th>
+                                                    <th>Ende</th>
+                                                    <th>Letzter Bearbeiter</th>
+                                                    <th>Kommunikation</th>
                                                 </tbody>
                                             </table>
                                         </div>

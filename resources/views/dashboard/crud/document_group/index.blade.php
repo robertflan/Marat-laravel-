@@ -40,6 +40,7 @@
                                     <th>#ID</th>
                                     <th>Name</th>
                                     {{-- <th>Firma</th> --}}
+                                    <th>Tab Name</th>
                                     <th>Has types</th>
                                     <th>Aktion</th>
                                 </tr>
@@ -49,6 +50,7 @@
                                     <th>#ID</th>
                                     <th>Name</th>
                                     {{-- <th>Firma</th> --}}
+                                    <th>Tab Name</th>
                                     <th>Has types</th>
                                     <th>Aktion</th>
                                 </tr>
@@ -59,6 +61,7 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     {{-- <td>{{ $item->company->name }}</td> --}}
+                                    <th>{{ $item->tab_name}}</th>
                                     <td>{{ $item->document_types->count() }}</td>
                                     <td>
                                     <div class="btn-group" aria-label="" role="group">

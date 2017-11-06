@@ -145,6 +145,11 @@
                             Questionnaire
                         </a>
                     </li>
+                    <li  {!! (Request::is('*questionnaire*') ? 'class="left-menu-list-active"' : '') !!}>
+                        <a class="left-menu-link" href="{{ url('/dashboard/questionnaire') }}">
+                            Questionnaire
+                        </a>
+                    </li>
                 </ul>
             </li>
             {{-- <li class="left-menu-list-separator"></li>
