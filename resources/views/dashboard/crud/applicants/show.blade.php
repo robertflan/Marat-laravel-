@@ -29,7 +29,7 @@
                             </button>
                             <h4 class="modal-title" id="myModalLabel">Upload Contract</h4>
                         </div>
-                        <form action="{{ url('/dashboard/applicants/'.$application->id.'/doc_upload') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('/dashboard/applicants/store_contract') }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="modal-body">
                                 <div class="form-group">

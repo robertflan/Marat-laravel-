@@ -314,6 +314,21 @@ class ApplicationController extends Controller
 
         return redirect('/dashboard/applicants/'.$id)->with('message', 'Profile updated!');
     }
+    public function store_contract()
+    {
+        echo "ello world";
+        exit;
+        $contract = new contract;
+        $contract->art = $request->art;
+        $contract->title = $request->title;
+        $contract->begin = $request->contract_begin;
+        $contract->end = $request->contract_end;
+        $contract->updated_at = new \Datetime;
+        $contract->updated_by = Auth::user()->id;
+        $contract->save();
+
+        return redirect('/dashboard/applicants/')->with('message', 'contract added!');
+    }
 
     /**
      * Remove the specified resource from storage.

@@ -19,9 +19,7 @@ class DocumentTemplateController extends Controller
     public function index()
     {
         $document_groups = DocumentGroup::with('document_types')->get();
-        $ff = fopen("/Users/dragonstar/Downloads/a.rtf","a");
-        fclose($ff);
-
+        
         return view('dashboard.crud.document_template.index', compact('document_groups'));
     }
 
