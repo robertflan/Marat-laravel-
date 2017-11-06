@@ -76,7 +76,62 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="document_upload_modal_new" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">Upload Contract</h4>
+                        </div>
+                        <form action="{{ url('/dashboard/applicants/'.$application->id.'/doc_upload') }}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="row" style="margin-bottom: 5px;">
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Art</label>
+                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type">
+                                            <option>ABC</option>
+                                        </select>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 5px;">
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Titel</label>
+                                        <input type="text" class="col-lg-6 form-control" style="width: 80%;" name="doc_title" id="doc_title" required/>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 5px;">
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Beginn</label>
+                                        <label class="input-group datepicker-only-init" style="margin-right: 19px;margin-bottom: 0;">
+                                            <input type="text" class="col-lg-5 form-control" name="doc_start_date" id="doc_start_date">
+                                            <span class="input-group-addon">
+                                                <i class="icmn-calendar"></i>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 5px;">
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Ende</label>
+                                        <label class="input-group datepicker-only-init" style="margin-right: 19px;margin-bottom: 0;">
+                                            <input type="text" class="col-lg-5 form-control" name="doc_end_date" id="doc_end_date">
+                                            <span class="input-group-addon">
+                                                <i class="icmn-calendar"></i>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="row" style="margin-left: 10px; margin-right: 10px;">
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 2px;" for="doc_type">File</label>
+                                        <input type="file" class="col-lg-6 form-control dropify" style="width: 80%;" name="doc_file" id="doc_file" required/>
+                                    </div>
+                                </div>
 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
             <!-- Profile Header -->
             <nav class="top-submenu top-submenu-with-background">
                 <div class="profile-header">
@@ -401,7 +456,7 @@
                                             <!-- Vertrage -->
                                             <div class="pull-right">
                                                 <a href="#">
-                                                    <button type="button" class="btn btn-primary margin-inline">Neu aus Vorlage</button>
+                                                <button id="upload_button" type="button" class="btn btn-primary margin-inline" data-toggle="modal" data-target="#document_upload_modal_new">Neu aus Vorlage</button>
                                                 </a>
 
                                                 <a href="#">
