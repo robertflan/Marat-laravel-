@@ -145,9 +145,9 @@
                             Questionnaire
                         </a>
                     </li>
-                    <li  {!! (Request::is('*questionnaire*') ? 'class="left-menu-list-active"' : '') !!}>
-                        <a class="left-menu-link" href="{{ url('/dashboard/questionnaire') }}">
-                            Questionnaire
+                    <li  {!! (Request::is('*document_templates*') ? 'class="left-menu-list-active"' : '') !!}>
+                        <a class="left-menu-link" href="{{ url('/dashboard/document_templates') }}">
+                            Document Template
                         </a>
                     </li>
                 </ul>
