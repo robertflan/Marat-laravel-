@@ -20,24 +20,22 @@
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
 
-         <div class="modal fade" id="document_upload_modal_upload" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal fade" id="document_upload_modal_upload" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title" id="myModalLabel">Upload Contract</h4>
+                            <h4 class="modal-title" id="myModalLabel">Upload contract</h4>
                         </div>
-                        <form action="{{ url('/dashboard/applicants/store_contract') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('/dashboard/applicants/'.$application->id.'/doc_upload') }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="modal-body">
                                 <div class="form-group">
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Art</label>
-                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type">
-                                            <option>ABC</option>
-                                        </select>
+                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type"></select>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Titel</label>
