@@ -49,3 +49,10 @@
 .doc_type_select:active{
     background:rgb(206, 177, 134) !important;
 }
+#exTab1 li{
+    margin-top: 10px;
+}
+.applicants-button{
+
+    min-width: 150px;
+}

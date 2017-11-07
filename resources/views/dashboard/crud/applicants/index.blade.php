@@ -67,7 +67,7 @@
                                     <td>{{ $candidate->short_status }}</td>
                                     <td>@if($candidate->manager) {{ $candidate->manager->name }} {{ $candidate->manager->last_name }} @endif</td>
                                     <td>{{ $candidate->rating }}</td>
-                                    <td><a href="{{ url('/dashboard/applicants/' . $candidate->id) }}">
+                                    <td><a href="{{ url('/dashboard/applicants/'.$candidate->id.'/filter/0')}}">
                                             <button type="button" class="btn btn-success-outline">
                                                 <i class="icmn-link" aria-hidden="true"></i>
                                                 Akte

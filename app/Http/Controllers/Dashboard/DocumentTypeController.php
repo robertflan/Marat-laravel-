@@ -22,9 +22,8 @@ class DocumentTypeController extends Controller
     public function index()
     {
         $document_types = DocumentType::with('document_group')->get();
-        $documents = Document::all();
 
-        return view('dashboard.crud.document_type.index', compact('document_types','documents'));
+        return view('dashboard.crud.document_type.index', compact('document_types'));
     }
 
     /**

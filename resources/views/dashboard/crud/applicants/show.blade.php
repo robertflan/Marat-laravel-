@@ -270,7 +270,7 @@
                     <section class="panel profile-user-content">
                         <div class="panel-body">
                             <div class="nav-tabs-horizontal">
-                                <ul class="nav nav-tabs" role="tablist">
+                                <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" href="javascript: void(0);" data-toggle="tab" data-target="#profile" role="tab">
                                             <i class="icmn-menu3"></i>
@@ -482,20 +482,20 @@
                                         <br />
 
                                         <div class="row">
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
+                                            <div class="col-lg-2 category-">
+                                                <div id="exTab1" class="container">	
                                                     <label class="form-control-label" for="document group"><h5 style="margin-bottom: 5px;">Kategorien</h5></label>
-                                                    <select name="document_group" class="form-control selectpicker" data-live-search="true" id="document_group">
+                                                    <ul  class="nav nav-pills">
                                                         @foreach($document_groups as $item)
-                                                            <option value="1">{{ $item->name }}</option>
+                                                        <li><a href="{{ url('/dashboard/applicants/20/filter/' . $item->id) }}" >
+                                                            <button type="button" class="btn btn-info applicants-button">{{ $item->name }}</button>
+                                                        </li>
                                                         @endforeach
-                                                    </select>
+                                                    </ul>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <br />
-
-                                        <div class="table-responsive margin-bottom-50">
+                                            <div class="col-lg-9">
+                                            <div class="table-responsive margin-bottom-50 ">
                                             <table class="table table-hover">
                                                 <thead style="background:red;color:white;">
                                                 <tr>
@@ -523,6 +523,11 @@
                                                 </tbody>
                                             </table>
                                         </div>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                        
 
                                         <h5>
                                             <!-- Vertrage -->

@@ -216,7 +216,7 @@ class ApplicationController extends Controller
      * @param  \App\Application  $application
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $filter=0)
     {
         $application = Application::with('applicant.profile', 'company', 'manager', 'job.questionnaires.questions', 'job.categories', 'job.location')->find($id);
 
@@ -226,11 +226,17 @@ class ApplicationController extends Controller
         //     })->get();
 
         // dd($documents);
-        $documents = Document::all()->where('application_id',$id);
+        //$documents = Document::all();
+        if($filter == 0){
+            $documents = Document::all();
+        }
+        else{
+            $documents = Document::all()->where('document_type_id', $filter);
+        }
         $document_types = DocumentType::all();
-        // if($filter != 0) {
-        //     $documents->where('document_type_id', $filter);
-        // }
+        //  if($filter != 0) {
+        //      $documents->where('document_type_id', 3);
+        //  }
 
         $document_groups = DocumentGroup::with('document_types')->get();
 
@@ -345,4 +351,25 @@ class ApplicationController extends Controller
     {
         //
     }
+    public function show_document($id)
+    {
+        $application = Application::with('applicant.profile', 'company', 'manager', 'job.questionnaires.questions', 'job.categories', 'job.location')->find($id);
+
+        // $documents = DocumentGroup::with('documents.updated_by_user', 'documents', 'documents.document_type')
+        //     ->whereHas('documents', function ($query) use ($application) {
+        //         $query->where('user_id', $application->applicant->id);
+        //     })->get();
+
+        // dd($documents);
+        $documents = Document::all();
+        $document_types = DocumentType::all();
+         if($id != 0) {
+             $documents->where('document_type_id', $id);
+         }
+
+        $document_groups = DocumentGroup::with('document_types')->get();
+
+        return view('dashboard.crud.applicants.index', compact('application', 'documents', 'document_groups', 'doc_count','document_types'));
+    }
+
 }
