@@ -220,12 +220,13 @@ class ApplicationController extends Controller
     {
         $application = Application::with('applicant.profile', 'company', 'manager', 'job.questionnaires.questions', 'job.categories', 'job.location')->find($id);
 
-        $documents = DocumentGroup::with('documents.updated_by_user', 'documents', 'documents.document_type')
-            ->whereHas('documents', function ($query) use ($application) {
-                $query->where('user_id', $application->applicant->id);
-            })->get();
+        // $documents = DocumentGroup::with('documents.updated_by_user', 'documents', 'documents.document_type')
+        //     ->whereHas('documents', function ($query) use ($application) {
+        //         $query->where('user_id', $application->applicant->id);
+        //     })->get();
 
         // dd($documents);
+        $documents = Document::all();
 
         $document_groups = DocumentGroup::with('document_types')->get();
 

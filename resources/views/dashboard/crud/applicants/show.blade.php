@@ -20,7 +20,7 @@
                 <div class="alert alert-info">{{ Session::get('message') }}</div>
             @endif
 
-            <!-- <div class="modal fade" id="document_upload_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+         <div class="modal fade" id="document_upload_modal_upload" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -143,7 +143,7 @@
                         </form>
                     </div>
                 </div>
-            </div> -->
+            </div> 
             <div class="modal fade" id="document_upload_modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -507,13 +507,17 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody id="document_list">
-                                                    <th>Eingang</th>
-                                                    <th>Titel2</th>
-                                                    <th>Art</th>
-                                                    <th>Beginn</th>
-                                                    <th>Ende</th>
+                                                @foreach($documents as $document)
+                                                    <tr>
+                                                    <th>{{ $document->created_at }}</th>
+                                                    <th>{{ $document->name }}</th>
+                                                    <th>{{ $document->file }}</th>
+                                                    <th>{{ $document->created_at }}</th>
+                                                    <th>{{ $document->created_at }}</th>
                                                     <th>Letzter Bearbeiter</th>
                                                     <th>Kommunikation</th>
+                                                    <tr>
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -526,7 +530,7 @@
                                                 </a>
 
                                                 <a href="#">
-                                                    <button id="upload_button" type="button" class="btn btn-primary margin-inline" data-toggle="modal" data-target="#document_upload_modal">Vertrag Hochladen</button>
+                                                    <button id="upload_button" type="button" class="btn btn-primary margin-inline" data-toggle="modal" data-target="#document_upload_modal_upload">Vertrag Hochladen</button>
                                                 </a>
 
                                                 <a href="#">
