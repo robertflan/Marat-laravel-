@@ -216,7 +216,7 @@ class ApplicationController extends Controller
      * @param  \App\Application  $application
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $filter)
+    public function show($id)
     {
         $application = Application::with('applicant.profile', 'company', 'manager', 'job.questionnaires.questions', 'job.categories', 'job.location')->find($id);
 
@@ -228,9 +228,9 @@ class ApplicationController extends Controller
         // dd($documents);
         $documents = Document::all()->where('application_id',$id);
         $document_types = DocumentType::all();
-        if($filter != 0) {
-            $documents->where('document_type_id', $filter);
-        }
+        // if($filter != 0) {
+        //     $documents->where('document_type_id', $filter);
+        // }
 
         $document_groups = DocumentGroup::with('document_types')->get();
 
