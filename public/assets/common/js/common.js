@@ -13,6 +13,13 @@ var cleanUI = {
  */
 
 $(function(){
+    $(".doc_type_select").click(function(){
+        $(".doc_type_select").css('background-color','white');
+        $(this).css('background-color','#01a8fe');
+        var type_content = $(this).children().eq(1).text();
+       // alert(type_content);
+        $("#doc_title_tem").val(type_content);
+    })
     
     /////////////////////////////////////////////////////////////////////////////
     // Slide toggle menu items on click

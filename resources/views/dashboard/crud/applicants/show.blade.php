@@ -90,13 +90,17 @@
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Category</label>
                                         <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type">
-                                            <option>Category</option>
+                                        @foreach($document_groups as $document)
+                                            <option>{{$document->name}}</option>
+                                        @endforeach
                                         </select>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Art</label>
                                         <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type">
-                                            <option>Art</option>
+                                        @foreach($document_types as $document)
+                                            <option>{{$document->name}}</option>
+                                        @endforeach
                                         </select>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
@@ -510,9 +514,9 @@
                                                     <th>{{ $document->created_at }}</th>
                                                     <th>{{ $document->name }}</th>
                                                     <th>{{ $document->file }}</th>
-                                                    <th>{{ $document->created_at }}</th>
-                                                    <th>{{ $document->created_at }}</th>
-                                                    <th>Letzter Bearbeiter</th>
+                                                    <th>{{ $document->start_date}}</th>
+                                                    <th>{{ $document->end_date}}</th>
+                                                    <th>Murat</th>
                                                     <th>Kommunikation</th>
                                                     <tr>
                                                     @endforeach

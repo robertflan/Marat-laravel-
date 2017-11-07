@@ -23,27 +23,23 @@
     <section class="panel">
         <div class="panel-heading">
         	<div class="pull-right">
-        		<a href="{{ url('/dashboard/document_groups/create') }}">
-                	<button type="button" class="btn btn-lg btn-success margin-inline">Create</button>
-                </a>
+                <button id="upload_button" type="button" class="btn btn-primary margin-inline" data-toggle="modal" data-target="#document_upload_modal">Create</button>
+
             </div>
-            <h3>Document Category</h3>
+            <h3>Document Template</h3>
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                 	@if(!$document_groups->isEmpty())
                     <div class="table-responsive margin-bottom-50">
-                        <table class="table table-striped">
+                        <table class="table table-dark table-hover">
                             <thead>
                                 <tr>
                                     <th>#ID</th>
                                     <th>Name</th>
                                     {{-- <th>Firma</th> --}}
                                     <th>Tab Name</th>
-                                    <th>Count</th>
-                                    <th>Template Name</th>
-                                    <th>Aktion</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -52,33 +48,17 @@
                                     <th>Name</th>
                                     {{-- <th>Firma</th> --}}
                                     <th>Tab Name</th>
-                                    <th>Count</th>
-                                    <th>Template Name</th>
-                                    <th>Aktion</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                             	@foreach($document_groups as $item)
-                                <tr>
+                                <tr class="doc_type_select">
                                     <td>{{ $item->id }}</td>
-                                    <td>
-                                         <a href="#">
-                                            <span id="upload_button" type="button"  data-toggle="modal" data-target="#document_upload_modal">{{ $item->name }}</span>
-                                         </a>
-
-                                    </td>
+                                    <td>{{ $item->name }}</td>
                                     {{-- <td>{{ $item->company->name }}</td> --}}
                                     <td>{{ $item->tab_name}}</td>
-                                    <td>{{ $item->document_types->count() }}</td>
-                                    <td>Template Name</td>
-                                    <td>
+                                    <!-- <td>
                                     <div class="btn-group" aria-label="" role="group">
-			                            <a href="{{ url('/dashboard/document_groups/' . $item->id . '/edit') }}">
-				                            <button type="button" class="btn btn-primary">
-				                                <i class="icmn-pencil3" aria-hidden="true"></i>
-				                                Edit
-				                            </button>
-			                            </a>
 						                <form action="{{ url('/dashboard/document_groups/' . $item->id) }}" class="d-inline" method="POST">
 						                	<input name="_method" type="hidden" value="DELETE">
 						                	{{ csrf_field() }}
@@ -87,7 +67,7 @@
 				                                Delete
 				                            </button>
 						                </form>
-			                        </div>
+			                        </div> -->
                                     </td>
                                 </tr>
                                 @endforeach
@@ -97,6 +77,29 @@
 	                @else
 						<div class="alert alert-warning">Nothing here. Go ahead and create new record.</div>
 	                @endif
+                </div>
+                <div class="col-lg-6">
+                        <table class="table table-dark table-hover">
+                            <tbody>
+                                @foreach($documents as $document)
+                                    <tr>
+                                        <td>{{ $document->name }}</td>
+                                        <td>
+                                            <div class="btn-group" aria-label="" role="group">
+                                                <form action="{{ url('/dashboard/document_groups/' . $item->id) }}" class="d-inline" method="POST">
+                                                    <input name="_method" type="hidden" value="DELETE">
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="icmn-bin" aria-hidden="true"></i>
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                 </div>
             </div>
         </div>
@@ -119,13 +122,15 @@
                                     
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;width: 30%;" for="doc_type">Category</label>
-                                        <input type="text" class="col-lg-6 form-control" style="width: 60%;" name="doc_title" id="doc_title" required/>
+                                        <input type="text" class="col-lg-6 form-control" style="width: 60%;" name="doc_title" id="doc_title_tem" required/>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;width: 30%;" for="doc_type">Name der Vorlage</label>
-                                        <select class="col-lg-6 form-control" style="width: 60%;" name="doc_type" id="doc_type">
-                                            <option>ABC</option>
-                                        </select>
+                                            <select class="col-lg-6 form-control" style="width: 60%;" name="doc_type" id="doc_type">
+                                                @foreach($document_types as $document)
+                                                <option>{{$document->name}}</option>
+                                                @endforeach
+                                            </select>
                                     </div>
     
                                     <div class="row" style="margin-left: 10px; margin-right: 10px;">

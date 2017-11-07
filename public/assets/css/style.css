@@ -3528,3 +3528,6 @@ input[type=radio] {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
+tr.success{
+    background: #46b8da !important;
+}

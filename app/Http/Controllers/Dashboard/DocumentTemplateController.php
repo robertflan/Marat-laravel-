@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Company;
+use App\Document;
+use App\DocumentType;
 
 class DocumentTemplateController extends Controller
 {
@@ -19,8 +21,10 @@ class DocumentTemplateController extends Controller
     public function index()
     {
         $document_groups = DocumentGroup::with('document_types')->get();
+        $documents = Document::all();
+        $document_types = DocumentType::all();
         
-        return view('dashboard.crud.document_template.index', compact('document_groups'));
+        return view('dashboard.crud.document_template.index', compact('document_groups','documents','document_types'));
     }
 
     /**

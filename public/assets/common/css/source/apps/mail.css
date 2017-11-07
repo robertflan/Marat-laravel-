@@ -46,3 +46,6 @@
         margin-bottom: 0px !important;
     }
 }
+.doc_type_select:active{
+    background:rgb(206, 177, 134) !important;
+}
