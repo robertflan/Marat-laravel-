@@ -151,7 +151,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title" id="myModalLabel">Upload Contract</h4>
+                            <h4 class="modal-title" id="myModalLabel">Upload document</h4>
                         </div>
                         <form action="{{ url('/dashboard/applicants/'.$application->id.'/doc_upload') }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
