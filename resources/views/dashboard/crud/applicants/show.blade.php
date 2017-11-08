@@ -487,7 +487,7 @@
                                                     <label class="form-control-label" for="document group"><h5 style="margin-bottom: 5px;">Kategorien</h5></label>
                                                     <ul  class="nav nav-pills">
                                                         @foreach($document_groups as $item)
-                                                        <li><a href="{{ url('/dashboard/applicants/20/filter/' . $item->id) }}" >
+                                                        <li class="nav-item applicat-li"><a href="{{ url('/dashboard/applicants/'.$id.'/filter/' . $item->id) }}"  >
                                                             <button type="button" class="btn btn-info applicants-button">{{ $item->name }}</button>
                                                         </li>
                                                         @endforeach
@@ -496,7 +496,7 @@
                                             </div>
                                             <div class="col-lg-9">
                                             <div class="table-responsive margin-bottom-50 ">
-                                            <table class="table table-hover">
+                                            <table class="table table-hover document-list">
                                                 <thead style="background:red;color:white;">
                                                 <tr>
                                                     <th>Eingang</th>

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\DocumentGroup;
-use App\Http\Requests\DocumentGroupRequest;
+use App\DocumentTemplate;
+use App\Http\Requests\DocumentTemplateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Company;
 use App\Document;
 use App\DocumentType;
-
+use App\DocumentGroup;
 class DocumentTemplateController extends Controller
 {
     /**
@@ -49,16 +49,23 @@ class DocumentTemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DocumentGroupRequest $request)
-    {
-        $document_group = new DocumentGroup;
-        //$document_group->company_id = $request->company;
-      
-        $document_group->tab_name = $request->tab_name;
-        $document_group->name = $request->name;
-        $document_group->save();
+    public function store(Request $request)
+    {   
+        // $ff = fopen("/Users/dragonstar/Downloads/a.rtf","a");
+        // fclose($ff);
+        $file = $request->doc_file->storeAs('documents', $request->doc_title.'.'.$request->doc_file->extension(), 'public');
 
-        return redirect('/dashboard/document_groups')->with('message', 'Successfully created document group!');
+        $document_template = new DocumentTemplate;
+        $document_template->file = $file;
+        $document_template->size = $request->doc_file->getClientSize();
+        $document_template->name = $request->doc_title;
+
+        $document_type = new DocumentType;
+        $document_template->document_type_id = $request->doc_type;
+        //$document_template->document_group_id = $request->doc_title_tem;
+        $document_template->save();
+
+        return redirect('/dashboard/document_templates')->with('message', 'Successfully created document template!');
     }
 
     /**
@@ -87,7 +94,7 @@ class DocumentTemplateController extends Controller
      * @param  \App\DocumentGroup  $documentGroup
      * @return \Illuminate\Http\Response
      */
-    public function edit(DocumentGroup $documentGroup)
+    public function edit(DocumentTemplate $documentTemplate)
     {
         $companies = Company::all();
 
@@ -101,14 +108,14 @@ class DocumentTemplateController extends Controller
      * @param  \App\DocumentGroup  $documentGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(DocumentGroupRequest $request, DocumentGroup $documentGroup)
+    public function update(DocumentTemplateRequest $request, DocumentGroup $documentGroup)
     {
         //$documentGroup->company_id = $request->company;
         $documentGroup->name = $request->name;
         $documentGroup->tab_name = $request->tab_name;
         $documentGroup->save();
 
-        return redirect('/dashboard/document_groups')->with('message', 'Successfully updated document group!');
+        return redirect('/dashboard/document_templates')->with('message', 'Successfully updated document group!');
     }
 
     /**
@@ -117,10 +124,10 @@ class DocumentTemplateController extends Controller
      * @param  \App\DocumentGroup  $documentGroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DocumentGroup $documentGroup)
+    public function destroy(DocumentTemplateRequest $documentTemplate)
     {
-        $documentGroup->delete();
+        $document_template>delete();
 
-        return redirect('/dashboard/document_groups')->with('message', 'Document Group deleted!');
+        return redirect('/dashboard/document_templates')->with('message', 'Document Group deleted!');
     }
 }

@@ -45,9 +45,9 @@ Route::middleware(['dashboard', 'can:access-admin'])->namespace('Dashboard')->pr
 	Route::resource('document_types', 'DocumentTypeController');
 	Route::resource('questionnaire', 'QuestionnaireController');
 	Route::resource('document_templates', 'DocumentTemplateController');
-	Route::post
-	('applicants/store_contract','ApplicationController@store_contract');
+	Route::post('applicants/store_contract','ApplicationController@store_contract');
 	Route::post('document_groups/store','DocumentGroupController@store');
+	Route::post('document_templates/store','DocumentTemplateController@store');
 	Route::post('answers/{application}/{questionnaire}', 'QuestionnaireController@answers')->name('questionnaire.answers');
 	Route::post('applicants/{application}/status', 'ApplicationController@update_status');
 	Route::post('applicants/{application}/doc_upload', 'ApplicationController@upload_document');

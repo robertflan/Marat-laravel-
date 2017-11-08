@@ -267,7 +267,7 @@ class ApplicationController extends Controller
         //   $document_count += sizeof($application->applicant->profile->qualifications);
         // }
 
-        return view('dashboard.crud.applicants.show', compact('application', 'documents', 'document_groups', 'doc_count','document_types'));
+        return view('dashboard.crud.applicants.show', compact('application', 'documents', 'document_groups', 'doc_count','document_types'))->with('id',$id);
     }
 
     /**

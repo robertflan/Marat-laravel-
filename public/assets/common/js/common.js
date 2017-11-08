@@ -18,12 +18,17 @@ $(function(){
         $(this).css('background-color','#01a8fe');
         var type_content = $(this).children().eq(1).text();
         $("#doc_title_tem").val(type_content);
-    })
+    });
     $('.applicants-button').click(function(){
         $(".nav-tabs-custom li").removeClass('active');
         $(".nav-tabs-custom li").eq(2).addClass('active');
         
-    })
+    });
+    // $(".applicat-li").click(function(){
+    //     //alert("ddd");
+    //     $(".applicat-li").removeClass('active');
+    //     $(this).addClass('active'); 
+    // })
     
     /////////////////////////////////////////////////////////////////////////////
     // Slide toggle menu items on click

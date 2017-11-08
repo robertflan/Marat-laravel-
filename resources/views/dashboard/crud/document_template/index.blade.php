@@ -26,11 +26,12 @@
                 <button id="upload_button" type="button" class="btn btn-primary margin-inline" data-toggle="modal" data-target="#document_upload_modal">Create</button>
 
             </div>
-            <h3>Document Template</h3>
+            
         </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-lg-6">
+                    <h3>Document Template</h3>
                 	@if(!$document_groups->isEmpty())
                     <div class="table-responsive margin-bottom-50">
                         <table class="table table-dark table-hover">
@@ -88,12 +89,8 @@
 	                @endif
                 </div>
                 <div class="col-lg-6">
+                    <!-- <h3 class="text-left">Documents</h3> -->
                         <table class="table table-dark table-hover">
-                            <thead>
-                                <tr>
-                                    Documents
-                                </tr>
-                            </thead>
                             <tbody>
                                 @foreach($documents as $document)
                                     <tr>
@@ -130,8 +127,8 @@
                             </button>
                             <h4 class="modal-title" id="myModalLabel">Vorlage hinzufügen</h4>
                         </div>
-                        <form action="{{ url('#') }}" method="POST" enctype="multipart/form-data">
-                           
+                        <form action="{{ url('/dashboard/document_templates/store') }}" method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
                             <div class="modal-body">
                                 <div class="form-group">
                                     
@@ -143,7 +140,7 @@
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;width: 30%;" for="doc_type">Name der Vorlage</label>
                                             <select class="col-lg-6 form-control" style="width: 60%;" name="doc_type" id="doc_type">
                                                 @foreach($document_types as $document)
-                                                <option>{{$document->name}}</option>
+                                                <option value="{{ $document->id }}">{{$document->name}}</option>
                                                 @endforeach
                                             </select>
                                     </div>
