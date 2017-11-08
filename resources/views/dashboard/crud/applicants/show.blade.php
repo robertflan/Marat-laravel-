@@ -38,7 +38,7 @@
                                         <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type"></select>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
-                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Titel</label>
+                                        <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Title</label>
                                         <input type="text" class="col-lg-6 form-control" style="width: 80%;" name="doc_title" id="doc_title" required/>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
