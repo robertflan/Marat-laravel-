@@ -58,11 +58,13 @@ class DocumentTemplateController extends Controller
         $document_template = new DocumentTemplate;
         $document_template->file = $file;
         $document_template->size = $request->doc_file->getClientSize();
-        $document_template->name = $request->doc_title;
+        $document_template->name = $file;
 
-        $document_type = new DocumentType;
+        //$document_type = new DocumentType;
         $document_template->document_type_id = $request->doc_type;
-        //$document_template->document_group_id = $request->doc_title_tem;
+        //$document_template->document_group_id = $request->doc_type;
+        // $document_group = new DocumentGroup;
+        $document_template->document_group_id = $request->doc_title_temp;
         $document_template->save();
 
         return redirect('/dashboard/document_templates')->with('message', 'Successfully created document template!');

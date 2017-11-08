@@ -134,7 +134,12 @@
                                     
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;width: 30%;" for="doc_type">Category</label>
-                                        <input type="text" class="col-lg-6 form-control" style="width: 60%;" name="doc_title" id="doc_title_tem" required/>
+                                        <!-- <input type="text" class="col-lg-6 form-control" style="width: 60%;" name="doc_title" id="doc_title_temp" required/> -->
+                                        <select class="col-lg-6 form-control" style="width: 60%;" name="doc_title_temp" id="doc_title_temp">
+                                                @foreach($document_groups as $document)
+                                                <option value="{{ $document->id }}">{{$document->name}}</option>
+                                                @endforeach
+                                        </select> 
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;width: 30%;" for="doc_type">Name der Vorlage</label>
