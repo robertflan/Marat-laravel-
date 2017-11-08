@@ -37,26 +37,30 @@
                             <thead>
                                 <tr>
                                     <th>#ID</th>
-                                    <th>Name</th>
+                                    <th>DocumentGroupName</th>
                                     {{-- <th>Firma</th> --}}
                                     <th>Tab Name</th>
+                                    <th>Count</th>
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
                                     <th>#ID</th>
-                                    <th>Name</th>
+                                    <th>DocumentGroupName</th>
                                     {{-- <th>Firma</th> --}}
                                     <th>Tab Name</th>
+                                    <th>Count</th>
                                 </tr>
                             </tfoot>
+                            @if(!$document_groups->isEmpty())
                             <tbody>
                             	@foreach($document_groups as $item)
+                                <a href="{{ url('/dashboard/document_templates/' . $item->id) }}">
                                 <tr class="doc_type_select">
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->name }}</td>
-                                    {{-- <td>{{ $item->company->name }}</td> --}}
-                                    <td>{{ $item->tab_name}}</td>
+                                    <td><a href="{{ url('/dashboard/document_templates/' . $item->id) }}">{{ $item->name }}</a></td>
+                                    <td><a href="{{ url('/dashboard/document_templates/' . $item->id) }}">{{ $item->tab_name}}</a></td>
+                                    <td><a href="{{ url('/dashboard/document_templates/' . $item->id) }}">{{ $item->document_types->count() }}</a></td>
                                     <!-- <td>
                                     <div class="btn-group" aria-label="" role="group">
 						                <form action="{{ url('/dashboard/document_groups/' . $item->id) }}" class="d-inline" method="POST">
@@ -70,9 +74,14 @@
 			                        </div> -->
                                     </td>
                                 </tr>
+                                </a>
                                 @endforeach
                             </tbody>
+                            @else
+                                <div class="alert alert-warning">Nothing here. Go ahead and create new record.</div>
+                            @endif
                         </table>
+
                     </div>
 	                @else
 						<div class="alert alert-warning">Nothing here. Go ahead and create new record.</div>
@@ -80,11 +89,17 @@
                 </div>
                 <div class="col-lg-6">
                         <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    Documents
+                                </tr>
+                            </thead>
                             <tbody>
                                 @foreach($documents as $document)
                                     <tr>
+                                        <td>{{ $document->id }}</td>
                                         <td>{{ $document->name }}</td>
-                                        <td>
+                                        <!-- <td>
                                             <div class="btn-group" aria-label="" role="group">
                                                 <form action="{{ url('/dashboard/document_groups/' . $item->id) }}" class="d-inline" method="POST">
                                                     <input name="_method" type="hidden" value="DELETE">
@@ -95,7 +110,7 @@
                                                     </button>
                                                 </form>
                                             </div>
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 @endforeach
                             </tbody>

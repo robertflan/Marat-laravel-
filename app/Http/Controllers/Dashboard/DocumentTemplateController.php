@@ -18,10 +18,14 @@ class DocumentTemplateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id=0)
     {
         $document_groups = DocumentGroup::with('document_types')->get();
-        $documents = Document::all();
+        if($id == 0){
+            $documents = Document::all();
+        }else{
+            $documents = Document::all()->where('documentgroup_id',$id);
+        };
         $document_types = DocumentType::all();
         
         return view('dashboard.crud.document_template.index', compact('document_groups','documents','document_types'));
@@ -63,9 +67,18 @@ class DocumentTemplateController extends Controller
      * @param  \App\DocumentGroup  $documentGroup
      * @return \Illuminate\Http\Response
      */
-    public function show(DocumentGroup $documentGroup)
+    public function show($id=0)
     {
         //
+        $document_groups = DocumentGroup::with('document_types')->get();
+        if($id == 0){
+            $documents = Document::all();
+        }else{
+            $documents = Document::all()->where('documentgroup_id',$id);
+        };
+        $document_types = DocumentType::all();
+        
+        return view('dashboard.crud.document_template.index', compact('document_groups','documents','document_types'));
     }
 
     /**

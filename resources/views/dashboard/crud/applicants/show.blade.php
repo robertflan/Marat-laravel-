@@ -272,12 +272,12 @@
                             <div class="nav-tabs-horizontal">
                                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="javascript: void(0);" data-toggle="tab" data-target="#profile" role="tab">
+                                        <a class="nav-link " href="javascript: void(0);" data-toggle="tab" data-target="#profile" role="tab">
                                             <i class="icmn-menu3"></i>
                                             Profil
                                         </a>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item active">
                                         <a class="nav-link" href="javascript: void(0);" data-toggle="tab" data-target="#contracts" role="tab">
                                             <i class="icmn-menu3"></i>
                                             Vertrage @if($doc_count['Vertrage']) <span class="label label-pill label-primary">{{ $doc_count['Vertrage'] }}</span> @endif
@@ -327,7 +327,7 @@
                                     </li>
                                 </ul>
                                 <div class="tab-content padding-vertical-20">
-                                    <div class="tab-pane active" id="profile" role="tabpanel">
+                                    <div class="tab-pane " id="profile" role="tabpanel">
                                         <br />
                                         <h5>Profil</h5>
                                         <form action="{{ url('/dashboard/applicants/'.$application->id) }}" method="POST" enctype="multipart/form-data">
@@ -478,7 +478,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="tab-pane" id="contracts" role="tabpanel">
+                                    <div class="tab-pane active" id="contracts" role="tabpanel">
                                         <br />
 
                                         <div class="row">
