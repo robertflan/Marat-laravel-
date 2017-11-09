@@ -53,18 +53,19 @@ class DocumentTemplateController extends Controller
     {   
         // $ff = fopen("/Users/dragonstar/Downloads/a.rtf","a");
         // fclose($ff);
-        $file = $request->doc_file->storeAs('documents', $request->doc_title.'.'.$request->doc_file->extension(), 'public');
+        $file_name = $request->doc_file->getClientOriginalName();
+        $file = $request->doc_file->storeAs('documents', $file_name, 'public');
 
         $document_template = new DocumentTemplate;
         $document_template->file = $file;
         $document_template->size = $request->doc_file->getClientSize();
-        $document_template->name = $file;
+        $document_template->name = $file_name;
 
         //$document_type = new DocumentType;
         $document_template->document_type_id = $request->doc_type;
         //$document_template->document_group_id = $request->doc_type;
         // $document_group = new DocumentGroup;
-        $document_template->document_group_id = $request->doc_title_temp;
+         $document_template->document_group_id = $request->doc_title_temp;
         $document_template->save();
 
         return redirect('/dashboard/document_templates')->with('message', 'Successfully created document template!');
