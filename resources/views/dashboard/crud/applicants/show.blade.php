@@ -35,7 +35,11 @@
                                 <div class="form-group">
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Art</label>
-                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_type" id="doc_type"></select>
+                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_group" id="doc_group">
+                                                @foreach($document_groups as $document)
+                                                <option value="{{ $document->id }}">{{$document->name}}</option>
+                                                @endforeach
+                                        </select> 
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Title</label>
@@ -506,14 +510,15 @@
                                                     <th>Ende</th>
                                                     <th>Letzter Bearbeiter</th>
                                                     <th>Kommunikation</th>
+                                                    
                                                 </tr>
                                                 </thead>
                                                 <tbody id="document_list">
                                                 @foreach($documents as $document)
                                                     <tr>
                                                     <th>{{ $document->created_at }}</th>
-                                                    <th>{{ $document->name }}</th>
-                                                    <th>{{ $document->file }}</th>
+                                                    <th>{{ $document->name}}</th>
+                                                    <th>{{ $document->documentgroup_id}}</th>
                                                     <th>{{ $document->start_date}}</th>
                                                     <th>{{ $document->end_date}}</th>
                                                     <th>Murat</th>

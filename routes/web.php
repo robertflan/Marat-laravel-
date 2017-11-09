@@ -43,6 +43,7 @@ Route::middleware(['dashboard', 'can:access-admin'])->namespace('Dashboard')->pr
 	Route::resource('users', 'UserController');
 	Route::resource('document_groups', 'DocumentGroupController');
 	Route::resource('document_types', 'DocumentTypeController');
+	Route::resource('documents','DocumentController');
 	Route::resource('questionnaire', 'QuestionnaireController');
 	Route::resource('document_templates', 'DocumentTemplateController');
 	Route::post('applicants/store_contract','ApplicationController@store_contract');

@@ -34,6 +34,11 @@ class Document extends Model
     {
         return $this->belongsTo(Application::class);
     }
+    public function document_group()
+    {
+        return $this->belongsTo(DocumentGroup::class);
+    }
+
 
     public function document_type()
     {
