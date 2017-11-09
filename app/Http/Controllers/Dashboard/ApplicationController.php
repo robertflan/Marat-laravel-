@@ -181,6 +181,7 @@ class ApplicationController extends Controller
         $document->user_id = $application->user_id;
         $document->application_id = $application->id;
         $document->document_type_id = $request->doc_type;
+        $document->documentgroup_id = 1;
         $document->updated_by = Auth::user()->id;
 
         $document->save();
