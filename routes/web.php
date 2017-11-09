@@ -53,6 +53,8 @@ Route::middleware(['dashboard', 'can:access-admin'])->namespace('Dashboard')->pr
 	Route::post('applicants/{application}/status', 'ApplicationController@update_status');
 	Route::post('applicants/{application}/doc_upload', 'ApplicationController@upload_document');
 	Route::get('applicants/data', 'ApplicationController@data');
+	Route::get('applicants/show', 'ApplicationController@show');
+
 	//Route::get('applicants/{id}/contracts/{key}', 'ApplicationController@getDocumentList');
 	//Route::resource('applicants', 'ApplicationController');
 	//Route::resource('applicants/filter/{id}','ApplicationController@show_document');

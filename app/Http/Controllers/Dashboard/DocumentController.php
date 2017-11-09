@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Document;
-use App\Http\Requests\DocumentRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Document;
 use App\DocumentGroup;
-use App\Company;
-use App\Category;
+use App\DocumentType;
+use App\Application;
 
 class DocumentController extends Controller
 {
@@ -20,7 +18,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        
+        //
     }
 
     /**
@@ -30,7 +28,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-       
+        //
     }
 
     /**
@@ -39,18 +37,18 @@ class DocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DocumentRequest $request)
+    public function store(Request $request)
     {
-       
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Document  $Document
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Document $Document)
+    public function show($id)
     {
         //
     }
@@ -58,34 +56,37 @@ class DocumentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Document  $Document
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Document $Document)
+    public function edit($id)
     {
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Document  $Document
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(DocumentRequest $request, Document $Document)
+    public function update(Request $request, $id)
     {
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Document  $Document
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Document $document)
+    public function destroy($id)
     {
-        
-        $document->delete();
-        return redirect('/dashboard/document')->with('message', 'Document Group deleted!');
+        //
+        $documents = new Document;
+        $documents->delete(); 
+        return redirect('/dashboard/applicants/')->with('message', 'Document Group deleted!');
     }
 }
