@@ -27,7 +27,7 @@ class DocumentTemplateController extends Controller
         }else{
             $documents =  Document::all();
         };
-
+        $documents =  Document::all();
         $document_types = DocumentType::all();
         
         return view('dashboard.crud.document_template.index', compact('document_groups','documents','document_types'));
@@ -84,9 +84,9 @@ class DocumentTemplateController extends Controller
         //
         $document_groups = DocumentGroup::with('document_types')->get();
         if($id == 0){
-            $documents = Document::all();
+            $documents =  DB::select("Select *  from documents");
         }else{
-            $documents = Document::all()->where('document_group_id',$id);
+            $documents =  DB::select("select * FROM document_types, documents where documents.document_type_id=document_types.id and document_types.document_group_id=$id");
         };
         $document_types = DocumentType::all();
         
