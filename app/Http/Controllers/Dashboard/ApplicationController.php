@@ -219,55 +219,55 @@ class ApplicationController extends Controller
     public function show($id, $filter=0)
     {
         $application = Application::with('applicant.profile', 'company', 'manager', 'job.questionnaires.questions', 'job.categories', 'job.location')->find($id);
-
-        // $documents = DocumentGroup::with('documents.updated_by_user', 'documents', 'documents.document_type')
-        //     ->whereHas('documents', function ($query) use ($application) {
-        //         $query->where('user_id', $application->applicant->id);
-        //     })->get();
-
-        // dd($documents);
-        //$documents = Document::all();
-        if($filter == 0){
-            $documents = Document::all()->where('application_id',$id);
-        }
-        else{
-            $documents = Document::all()->where('document_type_id', $filter)->where('application_id',$id);
-        }
-        $document_types = DocumentType::all();
-        //  if($filter != 0) {
-        //      $documents->where('document_type_id', 3);
-        //  }
-
-        $document_groups = DocumentGroup::with('document_types')->get();
-
-        $doc_count['Unterlagen'] = 0;
-        foreach($documents->where('tab_name', 'Unterlagen') as $group) {
-            $doc_count['Unterlagen'] += $group->documents->count();
-        }
-
-        $doc_count['Vertrage'] = 0;
-        foreach($documents->where('tab_name', 'Vertrage') as $group) {
-            $doc_count['Vertrage'] += $group->documents->count();
-        }
-
-
-        // if($application->applicant->profile->resume) {
-        //   $document_count += 1;
-        // }
-
-        // if($application->applicant->profile->testimonials) {
-        //   $document_count += 1;
-        // }
-
-        // if($application->applicant->profile->other_documents) {
-        //   $document_count += 1;
-        // }
-
-        // if($application->applicant->profile->qualifications) {
-        //   $document_count += sizeof($application->applicant->profile->qualifications);
-        // }
-
-        return view('dashboard.crud.applicants.show', compact('application', 'documents', 'document_groups', 'doc_count','document_types'))->with('id',$id);
+        
+                // $documents = DocumentGroup::with('documents.updated_by_user', 'documents', 'documents.document_type')
+                //     ->whereHas('documents', function ($query) use ($application) {
+                //         $query->where('user_id', $application->applicant->id);
+                //     })->get();
+        
+                // dd($documents);
+                //$documents = Document::all();
+                if($filter == 0){
+                    $documents = Document::all();
+                }
+                else{
+                    $documents = Document::all()->where('document_type_id', $filter);
+                }
+                $document_types = DocumentType::all();
+                //  if($filter != 0) {
+                //      $documents->where('document_type_id', 3);
+                //  }
+        
+                $document_groups = DocumentGroup::with('document_types')->get();
+        
+                $doc_count['Unterlagen'] = 0;
+                foreach($documents->where('tab_name', 'Unterlagen') as $group) {
+                    $doc_count['Unterlagen'] += $group->documents->count();
+                }
+        
+                $doc_count['Vertrage'] = 0;
+                foreach($documents->where('tab_name', 'Vertrage') as $group) {
+                    $doc_count['Vertrage'] += $group->documents->count();
+                }
+        
+        
+                // if($application->applicant->profile->resume) {
+                //   $document_count += 1;
+                // }
+        
+                // if($application->applicant->profile->testimonials) {
+                //   $document_count += 1;
+                // }
+        
+                // if($application->applicant->profile->other_documents) {
+                //   $document_count += 1;
+                // }
+        
+                // if($application->applicant->profile->qualifications) {
+                //   $document_count += sizeof($application->applicant->profile->qualifications);
+                // }
+        
+                return view('dashboard.crud.applicants.show', compact('application', 'documents', 'document_groups', 'doc_count','document_types'))->with('id',$id);
     }
 
     /**

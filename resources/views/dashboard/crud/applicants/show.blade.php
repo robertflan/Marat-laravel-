@@ -518,13 +518,13 @@
                                                     <tr>
                                                     <th>{{ $document->created_at }}</th>
                                                     <th>{{ $document->name}}</th>
-                                                    <th>{{ $document->document_type_id}}</th>
+                                                    <th>@if($document->document_type){{ $document->document_type->name}}@endif</th>
                                                     <th>{{ $document->start_date}}</th>
                                                     <th>{{ $document->end_date}}</th>
                                                     <th>Murat</th>
                                                     <th>Kommunikation</th>
                                                     <tr>
-                                                    @endforeach
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

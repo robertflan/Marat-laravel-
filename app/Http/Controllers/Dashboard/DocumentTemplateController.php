@@ -6,6 +6,7 @@ use App\DocumentTemplate;
 use App\Http\Requests\DocumentTemplateRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 use App\Company;
 use App\Document;
@@ -22,10 +23,11 @@ class DocumentTemplateController extends Controller
     {
         $document_groups = DocumentGroup::with('document_types')->get();
         if($id == 0){
-            $documents = Document::all();
+            $documents =  DB::select("Select *  from documents");
         }else{
-            $documents = Document::all()->where('documentgroup_id',$id);
+            $documents =  Document::all();
         };
+
         $document_types = DocumentType::all();
         
         return view('dashboard.crud.document_template.index', compact('document_groups','documents','document_types'));
@@ -84,7 +86,7 @@ class DocumentTemplateController extends Controller
         if($id == 0){
             $documents = Document::all();
         }else{
-            $documents = Document::all()->where('documentgroup_id',$id);
+            $documents = Document::all()->where('document_group_id',$id);
         };
         $document_types = DocumentType::all();
         

@@ -29,8 +29,7 @@ class CreateDocumentsTable extends Migration
             $table->unsignedInteger('document_type_id')->nullable();
             $table->foreign('document_type_id')->references('id')->on('document_types');
 
-            $table->unsignedInteger('document_group_id')->nullable();
-            $table->foreign('document_group_id')->references('id')->on('document_groups');
+           
 
             $table->timestamps();
             $table->softDeletes();
