@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\DocumentGroup;
+use App\Document;
 use App\Http\Requests\DocumentGroupRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -100,9 +101,13 @@ class DocumentGroupController extends Controller
      * @param  \App\DocumentGroup  $documentGroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DocumentGroup $documentGroup)
+    public function destroy($documentGroup)
     {
-        $documentGroup->delete();
+        DocumentGroup::where('id',$documentGroup)->delete();
+        //DB::table('documents')->where('documentgroup_id', $documentGroup)->delete();
+        //  $documents = Document::all()->where('documentgroup_id', $documentGroup);
+        //  $documents->delete();
+        //$documentGroup->delete();
 
         return redirect('/dashboard/document_groups')->with('message', 'Document Group deleted!');
     }

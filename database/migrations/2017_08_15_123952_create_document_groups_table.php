@@ -19,7 +19,6 @@ class CreateDocumentGroupsTable extends Migration
             $table->string('tab_name')->nullable();;
             $table->unsignedInteger('company_id')->nullable();
             $table->foreign('company_id')->references('id')->on('companies');
-
             $table->timestamps();
             $table->softDeletes();
         });

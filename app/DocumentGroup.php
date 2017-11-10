@@ -47,6 +47,6 @@ class DocumentGroup extends Model
 
 		public function documents()
     {
-        return $this->hasManyThrough(Document::class, DocumentType::class);
+        return $this->hasMany(Document::class);
     }
 }

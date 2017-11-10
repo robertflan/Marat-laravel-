@@ -35,10 +35,10 @@
                                 <div class="form-group">
                                     <div class="row" style="margin-bottom: 5px;">
                                         <label class="col-lg-2 form-control-label" style="font-size: 16px;padding-left: 20px;" for="doc_type">Art</label>
-                                        <select class="col-lg-6 form-control" style="width: 80%;" name="doc_group" id="doc_group">
-                                                @foreach($document_groups as $document)
-                                                <option value="{{ $document->id }}">{{$document->name}}</option>
-                                                @endforeach
+                                        <select class="col-lg-6 form-control" style="width:80%" name="doc_type" id="doc_type">
+                                            @foreach($document_types as $document)
+                                                <option value="{{$document->id}}">{{$document->name}}</option>
+                                            @endforeach
                                         </select> 
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
@@ -518,7 +518,7 @@
                                                     <tr>
                                                     <th>{{ $document->created_at }}</th>
                                                     <th>{{ $document->name}}</th>
-                                                    <th>{{ $document->documentgroup_id}}</th>
+                                                    <th>{{ $document->document_type_id}}</th>
                                                     <th>{{ $document->start_date}}</th>
                                                     <th>{{ $document->end_date}}</th>
                                                     <th>Murat</th>

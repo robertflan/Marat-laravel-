@@ -181,7 +181,6 @@ class ApplicationController extends Controller
         $document->user_id = $application->user_id;
         $document->application_id = $application->id;
         $document->document_type_id = $request->doc_type;
-        $document->documentgroup_id = $request->doc_group;
         $document->updated_by = Auth::user()->id;
 
         $document->save();
@@ -229,10 +228,10 @@ class ApplicationController extends Controller
         // dd($documents);
         //$documents = Document::all();
         if($filter == 0){
-            $documents = Document::all();
+            $documents = Document::all()->where('application_id',$id);
         }
         else{
-            $documents = Document::all()->where('document_type_id', $filter);
+            $documents = Document::all()->where('document_type_id', $filter)->where('application_id',$id);
         }
         $document_types = DocumentType::all();
         //  if($filter != 0) {

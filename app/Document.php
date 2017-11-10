@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Document extends Model
 {
@@ -21,7 +22,7 @@ class Document extends Model
         {
             return $this->belongsTo(Category::class);
         }
-        public function documentgroup()
+        public function document_group()
         {
             return $this->belongsTo(DocumentGroup::class);
         }
@@ -32,6 +33,45 @@ class Document extends Model
         public function application()
         {
             return $this->belongsTo(Application::class);
+        }
+        public function user()
+        {
+            return $this->belongsTo(User::class);
+        }    
+        public function updated_by_user()
+        {
+            return $this->belongsTo(User::class, 'updated_by');
+        }
+    
+        public function size_human($precision = 2) {
+            $base = log($this->attributes['size'], 1024);
+            $suffixes = array('', 'Kb', 'Mb', 'Gb', 'Tb');
+    
+            return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
+        }
+    
+        /*
+        |--------------------------------------------------------------------------
+        | ACCESORS
+        |--------------------------------------------------------------------------
+        */
+    
+        public function getDocumentGroupAttribute()
+        {
+            if(isset($this->relations['document_type']) && isset($this->relations['document_type']->relations['document_group'])) {
+                return $this->relations['document_type']->relations['document_group']->id;
+            } else {
+                return 0;
+            }
+        }
+    
+        public function getTabAttribute()
+        {
+            if(isset($this->relations['document_type']) && isset($this->relations['document_type']->relations['document_group'])) {
+                return $this->relations['document_type']->relations['document_group']->tab_name;
+            } else {
+                return 0;
+            }
         }
         
 }
