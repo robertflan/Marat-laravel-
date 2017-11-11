@@ -7,7 +7,7 @@ use App\Http\Requests\ApplicationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
-
+use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 
 use App\DocumentGroup;
@@ -228,10 +228,18 @@ class ApplicationController extends Controller
                 // dd($documents);
                 //$documents = Document::all();
                 if($filter == 0){
-                    $documents = Document::all();
+                    $documents = Document::all()->where('application_id',$id);
+                    // $documents = DocumentGroup::with('documents.updated_by_user', 'documents', 'documents.document_type')
+                    // ->whereHas('documents', function ($query) use ($application) {
+                    //     $query->where('user_id', $application->applicant->id);
+                    // })->get();
+        
+                    //$documents =  DB::select("Select *  from documents where application_id=$id");
+                    //print_r($documents);
                 }
                 else{
-                    $documents = Document::all()->where('document_type_id', $filter);
+                    $documents = Document::all()->where('application_id',$id)->where('document_group_id',$filter);
+                    //$documents = DB::select("select * FROM document_types, documents where documents.document_type_id=document_types.id and document_types.document_group_id=$filter");
                 }
                 $document_types = DocumentType::all();
                 //  if($filter != 0) {

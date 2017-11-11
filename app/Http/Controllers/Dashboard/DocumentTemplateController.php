@@ -86,7 +86,8 @@ class DocumentTemplateController extends Controller
         if($id == 0){
             $documents =  DB::select("Select *  from documents");
         }else{
-            $documents =  DB::select("select * FROM document_types, documents where documents.document_type_id=document_types.id and document_types.document_group_id=$id");
+            $documents = Document::all()->where('document_group_id',$id);
+            // $documents =  DB::select("select * FROM document_types, documents where documents.document_type_id=document_types.id and document_types.document_group_id=$id");
         };
         $document_types = DocumentType::all();
         
@@ -134,5 +135,13 @@ class DocumentTemplateController extends Controller
         $document_template>delete();
 
         return redirect('/dashboard/document_templates')->with('message', 'Document Group deleted!');
+    }
+    public function template_create(Request $request){
+        // $id = $request->input('id')
+        // $document_types = DocumentType::select('name')->where('document_group_id',$id);
+        // print_r($document_types);
+        $msg = "pl";
+        return response($msg);
+
     }
 }

@@ -82,11 +82,10 @@ class DocumentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Document $document)
     {
         //
-        $documents = new Document;
-        $documents->delete(); 
-        return redirect('/dashboard/applicants/')->with('message', 'Document Group deleted!');
+        $document->delete();
+        return redirect('/dashboard/document_templates/')->with('message', 'Document successfully deleted!');
     }
 }

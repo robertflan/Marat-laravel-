@@ -23,14 +23,14 @@
     <section class="panel">
         <div class="panel-heading">
         	<div class="pull-right">
-                <button id="upload_button" type="button" class="btn btn-primary margin-inline" data-toggle="modal" data-target="#document_upload_modal">Create</button>
+                <button id="upload_button" type="button" class="btn btn-primary margin-inline" data-toggle="modal" data-target="#document_upload_modal" onClick="getMessage()">Create</button>
 
             </div>
             
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 custom-template-div">
                     <h3>Document Template</h3>
                 	@if(!$document_groups->isEmpty())
                     <div class="table-responsive margin-bottom-50">
@@ -59,7 +59,7 @@
                                 <a href="{{ url('/dashboard/document_templates/' . $item->id) }}">
                                 <tr class="doc_type_select">
                                     <td>{{ $item->id }}</td>
-                                    <td><a href="{{ url('/dashboard/document_templates/' . $item->id) }}">{{ $item->name }}</a></td>
+                                    <td class="group_template"><a href="{{ url('/dashboard/document_templates/' . $item->id) }}">{{ $item->name }}</a></td>
                                     <td><a href="{{ url('/dashboard/document_templates/' . $item->id) }}">{{ $item->tab_name}}</a></td>
                                     <td><a href="{{ url('/dashboard/document_templates/' . $item->id) }}">{{ $item->document_types->count() }}</a></td>
                                     <!-- <td>
@@ -89,16 +89,22 @@
 	                @endif
                 </div>
                 <div class="col-lg-6">
-                    <!-- <h3 class="text-left">Documents</h3> -->
+                     <h4 class="text-left">Documents</h4>
                         <table class="table table-dark table-hover">
+                        <thead>
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>DocumentName</th>
+                                </tr>
+                        </thead>
                             <tbody>
                                 @foreach($documents as $document)
                                     <tr>
                                         <td>{{ $document->id }}</td>
                                         <td>{{ $document->name }}</td>
-                                        <!-- <td>
+                                        <td>
                                             <div class="btn-group" aria-label="" role="group">
-                                                <form action="{{ url('/dashboard/document_groups/' . $item->id) }}" class="d-inline" method="POST">
+                                                <form action="{{ url('/dashboard/documents/' . $document->id) }}" class="d-inline" method="POST">
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     {{ csrf_field() }}
                                                     <button type="submit" class="btn btn-danger">
@@ -107,7 +113,7 @@
                                                     </button>
                                                 </form>
                                             </div>
-                                        </td> -->
+                                        </td> 
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -167,4 +173,27 @@
                 </div>
             </div>
 </section>
+<script>
+
+        var group_id;
+
+        $('.doc_type_select').click(function(){
+            group_id = $('.doc_type_select').index(this);
+        })
+
+
+         function getMessage(){
+             //alert("message");
+            $.ajax({
+               type:'POST',
+               url:'/dashboard/document_template_create',
+               dataType: 'JSON',
+               data:{'id':group_id},
+               success:function(data){
+                   alert('d');
+                  //$("#msg").html(data.msg);
+               }
+            });
+         }
+</script>
 @endsection

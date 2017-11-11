@@ -522,7 +522,7 @@
                                                     <th>{{ $document->start_date}}</th>
                                                     <th>{{ $document->end_date}}</th>
                                                     <th>Murat</th>
-                                                    <th>Kommunikation</th>
+                                                    <th><i class="icmn-envelop"></i></th>
                                                     <tr>
                                                 @endforeach
                                                 </tbody>
