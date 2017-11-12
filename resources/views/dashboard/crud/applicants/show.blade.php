@@ -527,14 +527,14 @@
                                                     <th>
                                                         <div class="btn-group" aria-label="" role="group">
 
-                                                            <form action="{{ url('/documents/download/'.$document->file) }}" class="d-inline" method="POST">
+                                                            <!-- <form action="{{ url('/documents/download/'.$document->file) }}" class="d-inline" method="POST">
 
                                                             {{ csrf_field() }}
                                                                 <button type="button" class="btn btn-primary">
                                                                     <i class="icmn-pencil3" aria-hidden="true"></i>
                                                                     Download
                                                                 </button>
-                                                            </form>
+                                                            </form> -->
                                                             <form action="{{ url('/dashboard/documents/' . $document->id) }}" class="d-inline" method="POST">
                                                                 <input name="_method" type="hidden" value="DELETE">
                                                                 {{ csrf_field() }}
