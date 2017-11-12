@@ -526,16 +526,19 @@
                                                     <th><i class="icmn-envelop"></i></th>
                                                     <th>
                                                         <div class="btn-group" aria-label="" role="group">
-                                                            <a href="{{ url('/dashboard/destroy_by_application/' . $document->id . '/edit') }}">
+
+                                                            <form action="{{ url('/documents/download/'.$document->file) }}" class="d-inline" method="POST">
+
+                                                            {{ csrf_field() }}
                                                                 <button type="button" class="btn btn-primary">
                                                                     <i class="icmn-pencil3" aria-hidden="true"></i>
                                                                     Download
                                                                 </button>
-                                                            </a>
+                                                            </form>
                                                             <form action="{{ url('/dashboard/documents/' . $document->id) }}" class="d-inline" method="POST">
                                                                 <input name="_method" type="hidden" value="DELETE">
                                                                 {{ csrf_field() }}
-                                                                <button type="submit" class="btn btn-danger">
+                                                                <button type="submit" class="btn btn-danger btn-custom-delete">
                                                                     <i class="icmn-bin" aria-hidden="true"></i>
                                                                     Delete
                                                                 </button>

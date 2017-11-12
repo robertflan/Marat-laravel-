@@ -56,7 +56,8 @@ Route::middleware(['dashboard', 'can:access-admin'])->namespace('Dashboard')->pr
 	Route::resource('applicants/show', 'ApplicationController@show');
 	Route::get('document_templates/show', 'DocumentTemplateController@show');
 	Route::post('document_template_create','DocumentTemplateController@template_create');
-	Route::get('documents/destroy_by_application','DocumentController@destroy_by_application');
+	Route::post('documents/download/{id}','DocumentController@download');
+	//Route::resource('documents/download/{id}','DocumentController@download');
 	//Route::get('applicants/{id}/contracts/{key}', 'ApplicationController@getDocumentList');
 	//Route::resource('applicants', 'ApplicationController');
 	//Route::resource('applicants/filter/{id}','ApplicationController@show_document');

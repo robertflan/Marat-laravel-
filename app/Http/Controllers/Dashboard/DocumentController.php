@@ -88,5 +88,12 @@ class DocumentController extends Controller
         $document->delete();
         return redirect()->back();
     }
+    public function download($id)
+    {
+        print_r("d");
+       //display all types of reports from database name downloads
+         $download_path = storage_path('app').'/'.$id;
+         return response()->download($download_path);
+    }
     
 }
