@@ -86,6 +86,7 @@ class DocumentController extends Controller
     {
         //
         $document->delete();
-        return redirect('/dashboard/document_templates/')->with('message', 'Document successfully deleted!');
+        return redirect()->back();
     }
+    
 }

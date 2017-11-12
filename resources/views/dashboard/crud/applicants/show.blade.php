@@ -510,6 +510,7 @@
                                                     <th>Ende</th>
                                                     <th>Letzter Bearbeiter</th>
                                                     <th>Kommunikation</th>
+                                                    <th>Aken</th>
                                                     
                                                 </tr>
                                                 </thead>
@@ -523,6 +524,25 @@
                                                     <th>{{ $document->end_date}}</th>
                                                     <th>Murat</th>
                                                     <th><i class="icmn-envelop"></i></th>
+                                                    <th>
+                                                        <div class="btn-group" aria-label="" role="group">
+                                                            <a href="{{ url('/dashboard/destroy_by_application/' . $document->id . '/edit') }}">
+                                                                <button type="button" class="btn btn-primary">
+                                                                    <i class="icmn-pencil3" aria-hidden="true"></i>
+                                                                    Download
+                                                                </button>
+                                                            </a>
+                                                            <form action="{{ url('/dashboard/documents/' . $document->id) }}" class="d-inline" method="POST">
+                                                                <input name="_method" type="hidden" value="DELETE">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-danger">
+                                                                    <i class="icmn-bin" aria-hidden="true"></i>
+                                                                    Delete
+                                                                </button>
+                                                            </form>
+			                                            </div>
+                                                    
+                                                    </th>
                                                     <tr>
                                                 @endforeach
                                                 </tbody>

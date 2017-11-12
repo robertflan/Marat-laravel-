@@ -138,10 +138,10 @@ class DocumentTemplateController extends Controller
     }
     public function template_create(Request $request){
         // $id = $request->input('id')
-        // $document_types = DocumentType::select('name')->where('document_group_id',$id);
-        // print_r($document_types);
-        $msg = "pl";
-        return response($msg);
+        $document_types = DocumentType::select('name')->where('document_group_id',$id);
+        print_r($document_types);
+        //return redirect('/dashboard/document_templates')->with('message', 'Document Group deleted!');
+        
 
     }
 }

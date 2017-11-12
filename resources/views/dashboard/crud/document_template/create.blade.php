@@ -190,7 +190,7 @@
                dataType: 'JSON',
                data:{'id':group_id},
                success:function(data){
-                   alert('');
+                   alert('d');
                   //$("#msg").html(data.msg);
                }
             });
